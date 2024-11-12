@@ -1,0 +1,27 @@
+﻿<Window x:Class="GGYSTOREe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GGYSTOREe"
+        mc:Ignorable="d"
+        
+        Title="MainWindow" Height="450" Width="800">
+    <!--ItemsSource="{Binding List}"-->
+    <DataGrid  IsEnabled="False" ItemsSource="{Binding GameVM}" AutoGenerateColumns="False" HorizontalGridLinesBrush="DarkGray"
+    RowBackground="LightGray" AlternatingRowBackground="White">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Название" Binding="{Binding Path=Title}" Width="90" />
+            <DataGridHyperlinkColumn Header="Описание" Binding="{Binding Path=Description}" Width="80" />
+            <DataGridTextColumn Header="Издательство" Binding="{Binding Path=Publisher}" Width="50" />
+            <DataGridTextColumn Header="Дата выхода" Binding="{Binding Path=DateRelease}" Width="50" />
+            <DataGridTemplateColumn>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button Click="{Binding DeleteGameAyncCommand}" CommandParameter="{Binding Id}" Content="Удалить"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </DataGrid.Columns>
+    </DataGrid>
+</Window>
